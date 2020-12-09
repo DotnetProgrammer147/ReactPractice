@@ -2,13 +2,14 @@ import React from 'react';
 import Car from './Car';
 import Shape from './Shape';
 import SignIn from './SignIn';
-import ApiTest from './ApiTest';
+import ApiStringTest from './ApiStringTest';
+import ApiLoginTest from './ApiLoginTest';
 
 class Container extends React.Component{
 
     render(){
         return <div>
-            <ApiTest />
+            <ApiLoginTest />
         </div>
     }
 }
