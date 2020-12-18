@@ -10,22 +10,14 @@ class ApiLoginTestNew extends Component {
 
 
         this.state = {
-
             Email: '',
-
             Password: ''
-
         }
 
-
         this.Password = this.Password.bind(this);
-
         this.Email = this.Email.bind(this);
-
         this.login = this.login.bind(this);
-
     }
-
 
     Email(event) {
 
