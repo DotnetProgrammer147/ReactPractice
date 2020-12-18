@@ -10,7 +10,7 @@ class Container extends React.Component{
 
     render(){
         return <div>
-            <ApiLoginTestNew />
+            <ApiLoginTest />
         </div>
     }
 }

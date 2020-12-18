@@ -21,23 +21,28 @@ namespace test_api.Controllers
         }
 
         
-        [HttpPost]
+        
         [Route("Login")]
-        public IActionResult Login(string email, string password)
-        {
-            return Ok(true);
-        }
-
-
-        [Route("LoginNew")]
         [HttpPost]
-        public JsonResult LoginNew([FromBody]Login login)
+        public JsonResult Login(Login login)
         {
             if(login == null)
             {
                 return new JsonResult("Login is Null");
             }
-            return new JsonResult(login);// { Email = login.Email, Password = login.Password };
+            return new JsonResult(login);
+        }
+
+
+        [Route("LoginNew")]
+        [HttpPost]
+        public JsonResult LoginNew(Login login)
+        {
+            if(login == null)
+            {
+                return new JsonResult("Login is Null");
+            }
+            return new JsonResult(login);
             //return new Login { Email = "test@hotmail.com", Password = "test1234" };
             // int log = 0;
             // if (log != 0)

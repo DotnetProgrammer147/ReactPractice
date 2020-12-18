@@ -3,40 +3,68 @@ import React from 'react';
 
 class ApiLoginTest extends React.Component {
 
+    
     constructor() {
-        super()
+
+        super();
         this.state = {
-            email:'',
-            password:''
+            Email: '',
+            Password: ''
         }
+
+        this.Password = this.Password.bind(this);
+        this.Email = this.Email.bind(this);
+        this.login = this.login.bind(this);
     }
 
-    handleEmail(text)
-    {
-        this.setState({email:text.target.value})
+    Email(event) {
+
+        this.setState({ Email: event.target.value })
+
     }
 
-    handlePassword(text)
-    {
-        this.setState({password:text.target.value})
+    Password(event) {
+
+        this.setState({ Password: event.target.value })
+
     }
 
-    login()
-    {
-        let obj={}
-        obj.email = this.state.email;
-        obj.password = this.state.password;
+    login(event) {
 
-        fetch('https://localhost:5001/api/Test/Login',
-        {
-            header:{
-                "Content-Type": "application/json"
+        //debugger;
+
+        fetch('https://localhost:5001/api/Test/Login', {
+
+            method: 'post',
+
+            headers: {
+
+                'Accept': 'application/json',
+
+                'Content-Type': 'application/json'
+
             },
-            method:'POST',
-            body:JSON.stringify({obj})
-        }
-        ).then((response) => response.text())
-        .then((data) => console.log(data));;
+
+            body: JSON.stringify({
+
+                Email: this.state.Email,
+
+                Password: this.state.Password
+
+            })
+
+        }).then((Response) => Response.json())
+
+            .then((result) => {
+
+                console.log(result);
+                //if (result.Status == 'Invalid')
+                 //   alert('Invalid User');
+                //else
+                    //this.props.history.push("/Dashboard");
+
+            })
+
     }
 
     render(){
@@ -51,11 +79,11 @@ class ApiLoginTest extends React.Component {
             <div className="col-md-4 offset-md-4">            
                 <div className="row form-group">
                     <label className="control-label">Email</label>
-                    <input type='text' className="form-control" onChange={(text) => {this.handleEmail(text)}} placeholder="Email" />
+                    <input type='text' className="form-control" onChange={this.Email} placeholder="Email" />
                 </div>
                 <div className="row form-group">
                     <label className="control-label">Password</label>
-                    <input type='password' className="form-control" onChange={(text) => {this.handlePassword(text)}} placeholder="Password" />
+                    <input type='Password' className="form-control" onChange={this.Password} placeholder="Password" />
                 </div>
                 <div className="row form-group">
                     <button className="btn btn-success" onClick={this.login}> Submit</button>
