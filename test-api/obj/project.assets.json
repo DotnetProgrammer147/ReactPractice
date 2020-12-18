@@ -531,11 +531,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\hamza\\projects\\react\\test-api\\test-api.csproj",
+      "projectUniqueName": "D:\\hamza\\projects\\react\\demo-app\\test-api\\test-api.csproj",
       "projectName": "test-api",
-      "projectPath": "D:\\hamza\\projects\\react\\test-api\\test-api.csproj",
+      "projectPath": "D:\\hamza\\projects\\react\\demo-app\\test-api\\test-api.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\hamza\\projects\\react\\test-api\\obj\\",
+      "outputPath": "D:\\hamza\\projects\\react\\demo-app\\test-api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

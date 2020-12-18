@@ -27,7 +27,7 @@ class ApiLoginTest extends React.Component {
         obj.email = this.state.email;
         obj.password = this.state.password;
 
-        fetch('https://localhost:5001/Test/Login',
+        fetch('https://localhost:5001/api/Test/Login',
         {
             header:{
                 "Content-Type": "application/json"
@@ -40,7 +40,7 @@ class ApiLoginTest extends React.Component {
     }
 
     render(){
-        return <div style={{marginTop:200}}>
+        return <div style={{marginTop:100}}>
             <form id="loginForm" method="submit" >
             <div className="col-md-6 offset-md-3">
                 <h3>
