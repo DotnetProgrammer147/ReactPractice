@@ -7,9 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace test_api.Models
 {    
-    public class Login
+    public class Response
     {
-        public string Email { get; set; }        
-        public string Password { get; set; }
+        public string Status { set; get; }
+        public string Message { set; get; }
     }
 }
