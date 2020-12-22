@@ -7,7 +7,7 @@ function Navigation(props) {
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <Link class="navbar-brand" to="/">
-            React Multi-Page Website
+            Test Application
           </Link>
           <button
             class="navbar-toggler"
@@ -22,33 +22,14 @@ function Navigation(props) {
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li
-                class={`nav-item  ${
-                  props.location.pathname === "/" ? "active" : ""
-                }`}
-              >
-                <Link class="nav-link" to="/">
-                  Home
-                  <span class="sr-only">(current)</span>
-                </Link>
+              <li class={`nav-item  ${props.location.pathname === "/" ? "active" : ""}`}>
+                <Link class="nav-link" to="/SignIn">Login<span class="sr-only">(current)</span></Link>
               </li>
-              <li
-                class={`nav-item  ${
-                  props.location.pathname === "/about" ? "active" : ""
-                }`}
-              >
-                <Link class="nav-link" to="/about">
-                  About
-                </Link>
+              <li class={`nav-item  ${props.location.pathname === "/Car" ? "active" : ""}`} >
+                <Link class="nav-link" to="/Car">Car</Link>
               </li>
-              <li
-                class={`nav-item  ${
-                  props.location.pathname === "/contact" ? "active" : ""
-                }`}
-              >
-                <Link class="nav-link" to="/contact">
-                  Contact
-                </Link>
+              <li class={`nav-item  ${props.location.pathname === "/Shape" ? "active" : ""}`}>
+                <Link class="nav-link" to="/Shape">Shape</Link>
               </li>
             </ul>
           </div>
