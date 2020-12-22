@@ -22,16 +22,16 @@ namespace test_api.Controllers
 
         
         
-        [Route("Login")]
-        [HttpPost]
-        public JsonResult Login(Login login)
-        {
-            if(login == null)
-            {
-                return new JsonResult("Login is Null");
-            }
-            return new JsonResult(login);
-        }
+        // [Route("Login")]
+        // [HttpPost]
+        // public JsonResult Login(Login login)
+        // {
+        //     if(login == null)
+        //     {
+        //         return new JsonResult("Login is Null");
+        //     }
+        //     return new JsonResult(login);
+        //}
 
 
         [Route("LoginNew")]
