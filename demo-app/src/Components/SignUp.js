@@ -48,7 +48,7 @@ class SignUp extends React.Component {
     }
 
     Register(event) {
-        //debugger;
+        debugger;
         fetch('https://localhost:5001/api/Account/Register', {
             method: 'post',
             headers: {
@@ -67,7 +67,6 @@ class SignUp extends React.Component {
             .then((result) => {
                 console.log(result);
             })
-
     }
     
     render(){
@@ -119,9 +118,9 @@ class SignUp extends React.Component {
                     <br />
                     <div class="row form-group">
                         <div className="col-md-12">
-                            <Link className="btn btn-primary" asp-area="" asp-controller="Account" asp-action="SignIn">
+                            <Link class="btn btn-primary" to="/SignIn">
                                 Already have an account
-                            </Link>
+                                </Link>
                             <button type="button" onClick={this.Register} className="btn btn-success pull-right">
                                 Register
                             </button>
