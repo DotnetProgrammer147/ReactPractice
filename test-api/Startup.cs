@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using test_api.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace test_api
 {
@@ -34,6 +36,10 @@ namespace test_api
                 .AllowAnyHeader();
                 });
             });
+
+            services.AddDbContext<ApplicationDBContext>(options => 
+                options.UseSqlite(Configuration.GetConnectionString("TestConnectionString")));
+
             services.AddControllers();
             
         }

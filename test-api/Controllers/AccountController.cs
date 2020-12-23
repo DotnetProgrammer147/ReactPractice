@@ -5,38 +5,63 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using test_api.Models;
+using test_api.DAL;
 
 namespace test_api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
-    {  
+    {
+        private ApplicationDBContext _context;
+        public AccountController(ApplicationDBContext context)
+        {
+            _context = context;
+        }  
 
         [Route("Register")]
         [HttpPost]
-        public JsonResult Register(SignUp signUpCredentials)
+        public JsonResult Register(SignUpModel signUpCredentials)
         {
             if(signUpCredentials == null)
             {
                 return new JsonResult("Login is Null");
             }
-            return new JsonResult(new SignUp 
-                                      { 
-                                          FullName = signUpCredentials.FullName, 
-                                          DoB = signUpCredentials.DoB,
-                                          Email = signUpCredentials.Email,
-                                          Gender = signUpCredentials.Gender,
-                                          Password = signUpCredentials.Password,
-                                          ConfirmPassword = signUpCredentials.ConfirmPassword
-                                     });
+            User user = new User()
+            {
+                FullName = signUpCredentials.FullName,
+                DoB = signUpCredentials.DoB,
+                Email = signUpCredentials.Email,
+                Gender = signUpCredentials.Gender,
+                Password = signUpCredentials.Password,
+                ConfirmPassword = signUpCredentials.ConfirmPassword
+            };
+            _context.Add(user);
+            var status = _context.SaveChanges() > 0;
+            if (status)
+            {
+                return new JsonResult(new Response { Status = "Success", Message = "User Created Successfully!" });
+            }
+            else
+            {
+                return new JsonResult(new Response { Status = "Failed", Message = "User Not Created!" });
+            }
+            // return new JsonResult(new SignUpModel 
+            //                           { 
+            //                               FullName = signUpCredentials.FullName, 
+            //                               DoB = signUpCredentials.DoB,
+            //                               Email = signUpCredentials.Email,
+            //                               Gender = signUpCredentials.Gender,
+            //                               Password = signUpCredentials.Password,
+            //                               ConfirmPassword = signUpCredentials.ConfirmPassword
+            //                          });
                 
 
         }
 
         [Route("Login")]
         [HttpPost]
-        public JsonResult Login(Login login)
+        public JsonResult Login(LoginModel login)
         {
             if(login == null)
             {
@@ -70,7 +95,7 @@ namespace test_api.Controllers
 
         [Route("LoginNew")]
         [HttpPost]
-        public JsonResult LoginNew(Login login)
+        public JsonResult LoginNew(LoginModel login)
         {
             if(login == null)
             {
