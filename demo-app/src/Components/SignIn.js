@@ -51,6 +51,7 @@ class SignIn extends React.Component {
                         <i className="fa fa-sign-in"></i>
                         <span> Sign In</span>
                     </h3>
+                    <hr />
                 </div>
                 <div className="col-md-4 offset-md-4">            
                     <div className="row form-group">

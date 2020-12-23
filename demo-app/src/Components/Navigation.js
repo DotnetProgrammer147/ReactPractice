@@ -22,14 +22,14 @@ function Navigation(props) {
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class={`nav-item  ${props.location.pathname === "/" ? "active" : ""}`}>
-                <Link class="nav-link" to="/SignIn">Login<span class="sr-only">(current)</span></Link>
+            <li class="nav-item">
+                <Link class="nav-link" to="/HomeLogin">Home<span class="sr-only"></span></Link>
               </li>
-              <li class={`nav-item  ${props.location.pathname === "/Car" ? "active" : ""}`} >
-                <Link class="nav-link" to="/Car">Car</Link>
+              <li class="nav-item">
+                <Link class="nav-link" to="/SignIn">Login<span class="sr-only"></span></Link>
               </li>
-              <li class={`nav-item  ${props.location.pathname === "/Shape" ? "active" : ""}`}>
-                <Link class="nav-link" to="/Shape">Shape</Link>
+              <li class="nav-item">
+                <Link class="nav-link" to="/SignUp">Register</Link>
               </li>
             </ul>
           </div>

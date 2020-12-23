@@ -5,17 +5,19 @@ import Container from './Components/Container';
 import Car from './Components/Car';
 import Shape from './Components/Shape';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Navigation from './Components/Navigation'
-import SignIn from './Components/SignIn'
+import Navigation from './Components/Navigation';
+import SignIn from './Components/SignIn';
+import SignUp from './Components/SignUp';
+import HomeLogin from './Components/HomeLogin';
 
 function App() {
   return (
     <Router>
       <Navigation />
-      <Switch>       
-      <Route path="/SignIn" exact component={() => <SignIn />} />
-        <Route path="/Car" exact component={() => <Car />} />
-        <Route path="/Shape" exact component={() => <Shape />} />
+      <Switch>   
+        <Route path="/SignIn" exact component={() => <SignIn />} />
+        <Route path="/SignUp" exact component={() => <SignUp />} />
+        <Route path="/HomeLogin" exact component={() => <HomeLogin />} />
       </Switch>
     </Router>  
   );

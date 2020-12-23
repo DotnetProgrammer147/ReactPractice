@@ -11,7 +11,29 @@ namespace test_api.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
-    {   
+    {  
+
+        [Route("Register")]
+        [HttpPost]
+        public JsonResult Register(SignUp signUpCredentials)
+        {
+            if(signUpCredentials == null)
+            {
+                return new JsonResult("Login is Null");
+            }
+            return new JsonResult(new SignUp 
+                                      { 
+                                          FullName = signUpCredentials.FullName, 
+                                          DoB = signUpCredentials.DoB,
+                                          Email = signUpCredentials.Email,
+                                          Gender = signUpCredentials.Gender,
+                                          Password = signUpCredentials.Password,
+                                          ConfirmPassword = signUpCredentials.ConfirmPassword
+                                     });
+                
+
+        }
+
         [Route("Login")]
         [HttpPost]
         public JsonResult Login(Login login)
