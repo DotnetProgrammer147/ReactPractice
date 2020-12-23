@@ -25,7 +25,7 @@ namespace test_api.Controllers
         {
             if(signUpCredentials == null)
             {
-                return new JsonResult("Login is Null");
+                return new JsonResult("Credentials Invalid");
             }
             User user = new User()
             {

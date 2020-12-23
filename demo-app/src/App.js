@@ -3,12 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import Container from './Components/Container';
 import Car from './Components/Car';
-import Shape from './Components/Shape';
+import Footer from './Components/Footer';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Navigation from './Components/Navigation';
 import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
-import HomeLogin from './Components/HomeLogin';
+import Home from './Components/Home';
+import Contact from './Components/Contact';
+import About from './Components/About';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
       <Switch>   
         <Route path="/SignIn" exact component={() => <SignIn />} />
         <Route path="/SignUp" exact component={() => <SignUp />} />
-        <Route path="/HomeLogin" exact component={() => <HomeLogin />} />
+        <Route path="/Home" exact component={() => <Home />} />
+        <Route path="/Contact" exact component={() => <Contact />} />
+        <Route path="/About" exact component={() => <About />} />
       </Switch>
     </Router>  
   );

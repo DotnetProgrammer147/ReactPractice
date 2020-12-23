@@ -50,14 +50,11 @@ namespace test_api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-             app.UseCors();
+            }            
+            app.UseCors();
             app.UseHttpsRedirection();
-
-            app.UseRouting();
-           
+            app.UseRouting();           
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

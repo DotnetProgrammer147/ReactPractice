@@ -19,21 +19,6 @@ namespace test_api.Controllers
         {
             return "Test Api Get Function From Test Controller (API)!";
         }
-
-        
-        
-        // [Route("Login")]
-        // [HttpPost]
-        // public JsonResult Login(Login login)
-        // {
-        //     if(login == null)
-        //     {
-        //         return new JsonResult("Login is Null");
-        //     }
-        //     return new JsonResult(login);
-        //}
-
-
         [Route("LoginNew")]
         [HttpPost]
         public JsonResult LoginNew(LoginModel login)
@@ -43,18 +28,6 @@ namespace test_api.Controllers
                 return new JsonResult("Login is Null");
             }
             return new JsonResult(login);
-            //return new Login { Email = "test@hotmail.com", Password = "test1234" };
-            // int log = 0;
-            // if (log != 0)
-            // {
-            //     return new Response { Status = "Invalid", Message = "Invalid User." };
-            // }
-            // else
-            // {
-            //     return new Response { Status = "Success", Message = "Login Successfully" };
-            // }
-                
-
         }
     }
 }

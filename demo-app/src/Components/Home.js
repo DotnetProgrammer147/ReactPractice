@@ -1,29 +1,13 @@
-import React from "react";
+import React from 'react';
 
-class Home extends React.Component {
+class Home extends React.Component{
     render(){
-        return (
-            <div className="home">
-              <div class="container">
-                <div class="row align-items-center my-5">
-                  <div class="col-lg-7">
-                    <img
-                      class="img-fluid rounded mb-4 mb-lg-0"
-                      src="http://placehold.it/900x400"
-                      alt=""
-                    />
-                  </div>
-                  <div class="col-lg-5">
-                    <h1 class="font-weight-light">Home</h1>
-                    <p>
-                      This is Home Component
-                    </p>
-                  </div>
-                </div>
-              </div>
+        return <div>
+            <div class="col-md-8 offset-md-2" style={{marginTop:100}}>
+                <h1>Welcome to the React Login Test Application!</h1>
             </div>
-          );
-    }  
+        </div>
+    }
 }
 
 export default Home;
