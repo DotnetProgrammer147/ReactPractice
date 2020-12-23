@@ -36,7 +36,7 @@ namespace test_api.Controllers
 
         [Route("LoginNew")]
         [HttpPost]
-        public JsonResult LoginNew(Login login)
+        public JsonResult LoginNew(LoginModel login)
         {
             if(login == null)
             {
