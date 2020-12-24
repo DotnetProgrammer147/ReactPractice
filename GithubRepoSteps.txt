@@ -1,0 +1,11 @@
+- Create Repository on Github.com
+- Copy the repository path from github.com
+- create a local folder where git repository is required
+- R/click in the folder and select "Git Create Repository Here..."
+- .git folder is created in the folder
+- add items/project etc in this folder
+- R/Click and select Git Commit..
+- After Commiting select Push
+- In Push diaglog click on Manage button in Destination section
+- Give the copied Github.com repository path in the URL text box and click Ok
+- everything will be pushed from the local to remote (github.com) repository
