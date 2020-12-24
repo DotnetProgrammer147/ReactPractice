@@ -1,0 +1,9 @@
+ + create react app
+	- npx create-react-app my-app
+	- cd my-app
+	- npm start
+
+ + create .net core web api project
+	- dotnet new webapi -o my-api
+	- cd my-api
+	- dotnet run

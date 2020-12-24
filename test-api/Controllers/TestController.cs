@@ -14,11 +14,12 @@ namespace test_api.Controllers
     {        
 
         [HttpGet]
-         [Route("GetString")]
+        [Route("GetString")]
         public string GetString()
         {
             return "Test Api Get Function From Test Controller (API)!";
         }
+        
         [Route("LoginNew")]
         [HttpPost]
         public JsonResult LoginNew(LoginModel login)

@@ -1,0 +1,28 @@
+You can do the following things with the .ajax() method:
+
+1. Call any Action method of the Controller.
+2. Pass values to Action parameters from the View.
+3. Get the response from the Action method and show it on the View.
+4. All these things happen with no page postback.
+
+$.ajax({
+            type: "POST",
+            url: "/Home/Add",
+            data: {number1: val1, number2: val2},
+            dataType: "text",
+            success: function (msg) {
+                console.log(msg);
+            },
+            error: function (req, status, error) {
+                console.log(msg);
+            }
+        }); 
+
+1. type as POST – it means jQuery will make HTTP POST type of request to the ‘Add’ Action.
+2. url as "/Home/Add" – it should be URL to which the Action method can be invoked.
+3. data as {number1: val1, number2: val2} – here I give the values to the Action method’s parameters which are        number1 and number2. The values should be specified in key-value manner like:
+	a. number1: val1
+	b. number2: val2
+4. dataType as text – it specifies the type of response the ‘Add’ action from controller will send back. This Action method sends the       response in ‘int’ so I used ‘text’.
+5. success() – it is the callback function that executes if the .ajax() method executes successfully.
+6. error() – it is another callback function that executes if there is some failure when executing the .ajax()    method.
