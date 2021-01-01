@@ -5,19 +5,30 @@ class Car extends React.Component{
   constructor(){
     super();
     this.state = {
-      brand: "Ford",
-      model: "Mustang",
-      color: "red",
-      year: 1964
+      car: { 
+        brand: '', 
+        model: '', 
+        color:'', 
+        year: 0
+      }
     }
+    
   }
+
+  //brand: "Ford",
+  //model: "Mustang",
+  //color: "red",
+  //year: 1964
 
   changeColor = () => {
     this.setState(
       {
-        brand: "Mercedes",
-        color : "blue", 
-        year : 1970
+        car: {
+          brand: "Mercedes",
+          model: "Benz",
+          color : "blue", 
+          year : 1970
+        }
       }
     );
   }
