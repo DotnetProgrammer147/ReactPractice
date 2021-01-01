@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 class SignIn extends React.Component {
     
     constructor() {
@@ -63,7 +63,12 @@ class SignIn extends React.Component {
                         <input type='Password' className="form-control" onChange={this.Password} placeholder="Password" />
                     </div>
                     <div className="row form-group">
-                        <button type="button" className="btn btn-success" onClick={this.login}> Submit</button>
+                        <div className="col-md-12" style={{padding:0}}>
+                            <Link class="btn btn-primary pull-right" to="/SignUp">
+                                Create Account
+                            </Link>
+                            <button type="button" className="btn btn-success pull-left" onClick={this.login}> Submit</button>                            
+                        </div>
                     </div>
                 </div>
             </form>

@@ -13,15 +13,15 @@ namespace test_api.Controllers
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
-        private ApplicationDBContext _context;
-        public AccountController(ApplicationDBContext context)
+        private EFRepository _repository;
+        public AccountController(EFRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }  
 
         [Route("Register")]
         [HttpPost]
-        public JsonResult Register(SignUpModel signUpCredentials)
+        public async Task<JsonResult> Register(SignUpModel signUpCredentials)
         {
             if(signUpCredentials == null)
             {
@@ -36,8 +36,8 @@ namespace test_api.Controllers
                 Password = signUpCredentials.Password,
                 ConfirmPassword = signUpCredentials.ConfirmPassword
             };
-            _context.Add(user);
-            var status = _context.SaveChanges() > 0;
+            
+            var status = await _repository.Insert(user);
             if (status)
             {
                 return new JsonResult(new Response { Status = "Success", Message = "User Created Successfully!" });
@@ -46,22 +46,11 @@ namespace test_api.Controllers
             {
                 return new JsonResult(new Response { Status = "Failed", Message = "User Not Created!" });
             }
-            // return new JsonResult(new SignUpModel 
-            //                           { 
-            //                               FullName = signUpCredentials.FullName, 
-            //                               DoB = signUpCredentials.DoB,
-            //                               Email = signUpCredentials.Email,
-            //                               Gender = signUpCredentials.Gender,
-            //                               Password = signUpCredentials.Password,
-            //                               ConfirmPassword = signUpCredentials.ConfirmPassword
-            //                          });
-                
-
         }
 
         [Route("Login")]
         [HttpPost]
-        public JsonResult Login(LoginModel login)
+        public async Task<JsonResult> Login(LoginModel login)
         {
             if(login == null)
             {
@@ -69,8 +58,8 @@ namespace test_api.Controllers
             }
             else
             {
-                var status = AuthenticateUser(login.Email, login.Password);
-                if (status)
+                var user = await _repository.GetUserByEmail(login.Email);
+                if (user != null)
                 {
                     return new JsonResult(new Response { Status = "Success", Message = "Login Successfully" });
                 }
@@ -78,18 +67,6 @@ namespace test_api.Controllers
                 {
                     return new JsonResult(new Response { Status = "Invalid", Message = "Invalid User." });
                 }
-            }
-        }
-
-        public bool AuthenticateUser(string email, string password)
-        {
-            if(email.Equals("test@gmail.com") && password.Equals("test1234"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
 

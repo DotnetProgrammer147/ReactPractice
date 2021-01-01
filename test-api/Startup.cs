@@ -31,9 +31,9 @@ namespace test_api
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                builder.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
             });
 
@@ -41,6 +41,8 @@ namespace test_api
                 options.UseSqlite(Configuration.GetConnectionString("TestConnectionString")));
 
             services.AddControllers();
+
+            services.AddTransient<EFRepository, EFRepository>();
             
         }
 
