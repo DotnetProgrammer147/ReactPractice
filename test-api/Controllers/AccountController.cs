@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using test_api.Models;
 using test_api.DAL;
+using test_api.Factories;
 
 namespace test_api.Controllers
 {
@@ -23,28 +24,28 @@ namespace test_api.Controllers
         [HttpPost]
         public async Task<JsonResult> Register(SignUpModel signUpCredentials)
         {
-            if(signUpCredentials == null)
+            try
             {
-                return new JsonResult("Credentials Invalid");
+                if(signUpCredentials == null)
+                {
+                    return new JsonResult("Credentials Invalid");
+                }
+
+                User user = EntityFactory.Create(signUpCredentials);            
+                var status = await _repository.Insert(user);
+
+                if (status)
+                {
+                    return new JsonResult(new Response { Status = "Success", Message = "User Created Successfully!" });
+                }
+                else
+                {
+                    return new JsonResult(new Response { Status = "Failed", Message = "User Not Created!" });
+                }
             }
-            User user = new User()
+            catch(Exception ex)
             {
-                FullName = signUpCredentials.FullName,
-                DoB = signUpCredentials.DoB,
-                Email = signUpCredentials.Email,
-                Gender = signUpCredentials.Gender,
-                Password = signUpCredentials.Password,
-                ConfirmPassword = signUpCredentials.ConfirmPassword
-            };
-            
-            var status = await _repository.Insert(user);
-            if (status)
-            {
-                return new JsonResult(new Response { Status = "Success", Message = "User Created Successfully!" });
-            }
-            else
-            {
-                return new JsonResult(new Response { Status = "Failed", Message = "User Not Created!" });
+                return new JsonResult(new Response { Status = "Exception", Message = ex.Message });
             }
         }
 
@@ -52,33 +53,29 @@ namespace test_api.Controllers
         [HttpPost]
         public async Task<JsonResult> Login(LoginModel login)
         {
-            if(login == null)
+            try
             {
-                return new JsonResult("Login is Null");
-            }
-            else
-            {
-                var user = await _repository.GetUserByEmail(login.Email);
-                if (user != null)
+                if(login == null)
                 {
-                    return new JsonResult(new Response { Status = "Success", Message = "Login Successfully" });
+                    return new JsonResult("Login is Null");
                 }
                 else
                 {
-                    return new JsonResult(new Response { Status = "Invalid", Message = "Invalid User." });
+                    var user = await _repository.GetUserByEmail(login.Email);
+                    if (user != null)
+                    {
+                        return new JsonResult(new Response { Status = "Success", Message = "Logged In Successfully" });
+                    }
+                    else
+                    {
+                        return new JsonResult(new Response { Status = "Invalid", Message = "Invalid User." });
+                    }
                 }
             }
-        }
-
-        [Route("LoginNew")]
-        [HttpPost]
-        public JsonResult LoginNew(LoginModel login)
-        {
-            if(login == null)
+            catch(Exception ex)
             {
-                return new JsonResult("Login is Null");
+                return new JsonResult(new Response { Status = "Exception", Message = ex.Message });
             }
-            return new JsonResult(login);
         }
     }
 }
